@@ -10,12 +10,18 @@ import xgboost
 import joblib
 
 st.sidebar.title("Projet Analyse Énergétique")
-st.sidebar.write("Réalisé par Mounya Kazi Aoual")
+st.sidebar.write("Réalisé par :")
+st.sidebar.write("Mounya Kazi Aoual")
+st.sidebar.write("Thierry Allem")
+st.sidebar.write("Tony Moscatelli")
+
 st.write("")
 st.write("")
 st.write("")
 st.write("")
 st.write("")
+st.write("")
+
 st.sidebar.title("Sommaire")
 
 pages = ["Introduction et problématique", "Exploration des données", "Analyse des données", "Modélisation et Prédictions","Conclusion et Perspectives"]
