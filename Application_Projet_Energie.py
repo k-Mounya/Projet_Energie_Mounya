@@ -685,10 +685,6 @@ Dans ce projet, nous avons analysé et modélisé les consommations énergétiqu
 
 
 
-#### Exploration et Pré-processing des Données
-
-
-
 L'une des étapes cruciales de ce projet a été l'exploration rigoureuse de chacune des 31 variables. Un point particulièrement important a été la **sélection des variables les plus complètes** pour garantir la qualité du modèle. Certaines variables présentaient des taux de complétude aussi faibles que **20%**, ce qui aurait pu biaiser les résultats si elles avaient été conservées.
 
 - **Gestion des valeurs manquantes** : Malgré nos efforts pour compléter les données, notamment par des tentatives de contact avec **RTE**, certaines variables ne pouvaient pas être récupérées ou complétées. Nous avons donc été contraints de supprimer ces variables incomplètes afin de préserver l'intégrité des résultats.
@@ -697,15 +693,7 @@ L'une des étapes cruciales de ce projet a été l'exploration rigoureuse de cha
 
 
 
-#### Modélisation et Résultats
-
-
-
 Nous avons ensuite utilisé des techniques de **machine learning supervisé**, notamment le modèle **Random Forest**, pour prédire la consommation énergétique future. Nos résultats sont globalement satisfaisants, le modèle capturant correctement les tendances générales de consommation par région, jours de la semaine, et horaires. Cependant, pour affiner encore davantage les prédictions, il serait nécessaire d'enrichir le modèle avec des variables supplémentaires.
-
-
-
-#### Limitations et Optimisations Futures
 
 
 
@@ -714,19 +702,11 @@ Il est important de noter que le modèle **Random Forest**, bien que performant,
 Cependant, dans un environnement plus adapté, tel qu’une infrastructure serveur ou sur le cloud, le modèle et le **Grid Search** pourraient être exploités à leur **plein potentiel**, avec davantage d'arbres ou une plus grande profondeur pour le **Random Forest**, et une recherche plus exhaustive d’hyperparamètres pour le **Grid Search**. Ces optimisations pourraient non seulement améliorer la précision des prédictions, mais aussi accélérer le traitement des données et maximiser l'efficacité du modèle.
 
 
-#### Perspectives d'Amélioration
-
-
 
 Pour améliorer la précision des prédictions, plusieurs axes pourraient être explorés :
 - **Ajout de données socio-économiques** : Telles que le taux d'urbanisation, les habitudes de consommation, et les réglementations thermiques, qui influencent directement la demande énergétique.
 - **Optimisation des hyperparamètres** : Ajuster davantage les paramètres des modèles, par exemple en modifiant la profondeur des arbres dans les modèles de forêt aléatoire, ou en augmentant le nombre d'itérations dans les algorithmes d’apprentissage.
 - **Analyse non supervisée** : L’utilisation de techniques de clustering pourrait identifier des groupes de régions avec des profils de consommation similaires, ou des anomalies dans les comportements énergétiques régionaux.
-
-
-
-#### Pistes d'études futures
-
 
 
 Le projet a ouvert la voie à plusieurs études potentielles qui pourraient enrichir notre compréhension des dynamiques énergétiques en France. Parmi ces pistes, nous proposons :
