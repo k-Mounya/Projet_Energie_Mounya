@@ -9,13 +9,18 @@ from datetime import datetime
 import xgboost
 import joblib
 
-
+st.sidebar.title("Projet Analyse Énergétique")
+st.sidebar.write("Réalisé par Mounya Kazi Aoual")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
 st.sidebar.title("Sommaire")
 
 pages = ["Introduction et problématique", "Exploration des données", "Analyse des données", "Modélisation et Prédictions","Conclusion et Perspectives"]
 page = st.sidebar.radio("Aller vers la page", pages)
-st.sidebar.title("Projet Analyse Énergétique")
-st.sidebar.write("Réalisé par Mounya Kazi Aoual")
+
 
 pd.set_option('display.max_columns', None)
 
