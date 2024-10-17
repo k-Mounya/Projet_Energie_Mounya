@@ -17,10 +17,7 @@ st.sidebar.write("Tony Moscatelli")
 
 st.write("")
 st.write("")
-st.write("")
-st.write("")
-st.write("")
-st.write("")
+
 
 st.sidebar.title("Sommaire")
 
