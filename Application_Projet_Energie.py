@@ -10,30 +10,16 @@ import xgboost
 import joblib
 
 st.sidebar.title("Sommaire")
-<<<<<<< HEAD
 pages = ["Introduction et problématique", "Exploration des données", "Analyse des données", "Modélisation et Prédictions","Conclusion et Perspectives"]
 page = st.sidebar.radio("Aller vers la page", pages)
 pd.set_option('display.max_columns', None)
-dfsmp = pd.read_csv(r'C:\Users\Mounia\Documents\Projet ENERGIE\dfsmp.csv', sep=',', header=0)
+dfsmp = pd.read_csv('dfsmp.csv', sep=',', header=0)
 
 if page == pages[0]:
     #st.write("### Contexte du projet")
     st.markdown("<h1 style='text-align: center;'>Contexte du projet</h1>", unsafe_allow_html=True)
     st.write("---")
 
-=======
-pages = ["Introduction et problématique", "Exploration des données", "Analyse des données", "Modélisation et prédictions"]
-page = st.sidebar.radio("Aller vers la page", pages)
-pd.set_option('display.max_columns', None)
-<<<<<<<< HEAD:Application Projet Energie1.py
-dfsmp = pd.read_csv(r'C:\Users\Mounia\Documents\Projet ENERGIE\dfsmp.csv', sep=',', header=0)
-========
-dfsmp = pd.read_csv('dfsmp.csv', sep=',', header=0)
->>>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437:Application_Projet_Energie.py
-
-if page == pages[0]:
-    st.write("## Contexte du projet")
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     st.write("La croissance démographique, l’accès d’une part grandissante de la population mondiale à l’énergie, le développement rapide de certaines économies, synonyme d’industrialisation, les pays développés habitués à une énergie abondante et relativement bon marché, sont autant de facteurs contribuant à une hausse continue de la consommation d’énergie.")
     st.write("Le secteur économique de l'énergie en France comprend la production locale et l'importation d'énergie primaire, Pour couvrir les besoins énergétiques de la France, la branche énergétique française utilise de l'énergie primaire, produite en France ou importée, puis la transforme et la distribue aux utilisateurs.")
     st.write("Nous nous intéressons à la production locale, ainsi la France compte dans son bouquet énergétique des énergies fossiles et d’autres renouvelables tels que : le nucléaire, le pétrole, le gaz naturel, des d'énergies renouvelables et déchets.")
@@ -43,8 +29,7 @@ if page == pages[0]:
     st.write("- L’analyse par filière de production : énergie nucléaire / renouvelable")
     st.write("- Un focus sur les énergies renouvelables et leurs lieux d’implantation.")
     st.write("- Pour y parvenir, nous allons utiliser un ensemble de données d’approximativement 2 millions d’enregistrements. Les données contiennent les informations sur la consommation d’électricité et sa production à partir de plusieurs de plusieurs sources d’énergie : nucléaire, solaire, éolienne, bioénergie, fioul, …  par région métropolitaine (hors corse) enregistrées par demi-heure.")
-<<<<<<< HEAD
-    st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\Image énergies.jpg")
+    st.image("Images/Image énergies.jpg")
 
 elif page == pages[1]:
     #st.write("Notre DataFrame sur les consommations d'énergie par région et par tranche de 3 h")
@@ -59,24 +44,7 @@ Nous y examinons les principales caractéristiques des données, telles que les 
     st.write("Notre DataFrame sur les consommations d'énergie par région et par tranche de 3 h")
     st.write("")
     pd.set_option('display.max_columns', None)
-    dfsmp = pd.read_csv(r'C:\Users\Mounia\Documents\Projet ENERGIE\dfsmp.csv', sep=',', header=0)
-=======
-<<<<<<<< HEAD:Application Projet Energie1.py
-    st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\Image énergies.jpg")
-
-========
-    st.image('Images/Image énergies.jpg')
-    
->>>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437:Application_Projet_Energie.py
-elif page == pages[1]:
-    st.write("## Exploration des données")
-    st.write("Notre DataFrame sur les consommations d'énergie par région et par tranche de 3 h")
-<<<<<<<< HEAD:Application Projet Energie1.py
-========
-    pd.set_option('display.max_columns', None)
     dfsmp = pd.read_csv('dfsmp.csv', sep=',', header=0)
->>>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437:Application_Projet_Energie.py
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     dfsmp.columns = [col.replace(" ", "\n") for col in dfsmp.columns]
     st.dataframe(dfsmp.head(10), height=300)
 
@@ -84,7 +52,6 @@ elif page == pages[1]:
     if st.checkbox('Afficher les régions'):
         st.write(dfsmp['region'].unique())
 
-<<<<<<< HEAD
         # Checkbox pour afficher les valeurs manquantes
     if st.checkbox('Afficher les années'):
         #st.write(dfsmp['annee'].unique())
@@ -102,16 +69,6 @@ elif page == pages[1]:
     
     
     # Checkbox pour afficher le shape du DataFrame
-=======
-    # Checkbox pour afficher les années
-    if st.checkbox('Afficher les années'):
-        annees = dfsmp['annee'].unique()
-        annees_str = [str(annee) for annee in annees]
-        annees_df = pd.DataFrame(annees_str, columns=["Année"])
-        st.write(annees_df)
-    
-    # Checkbox pour afficher les colonnes et types
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     if st.checkbox('Afficher les colonnes et types'):
         st.write('Colonne et types du DataFrame:')
         st.write(dfsmp.dtypes)
@@ -127,7 +84,6 @@ elif page == pages[1]:
         st.write(dfsmp.shape)
 
 elif page == pages[2]:
-<<<<<<< HEAD
     #st.write("### Analyse des Données")
     st.markdown("<h1 style='text-align: center;'>Analyse et visualisation des Données</h1>", unsafe_allow_html=True)
     st.write("---")
@@ -140,27 +96,16 @@ En complément, nous avons décidé de **croiser ces données avec d'autres fact
 L'enjeu ici est de déterminer si ces **nouvelles dimensions** apportent un éclairage supplémentaire pertinent à notre étude. Ces croisements pourraient nous offrir une vision plus complète des dynamiques énergétiques en France et nous permettre d’anticiper les évolutions futures, que ce soit en termes de **gestion des infrastructures** ou d’**optimisation de l’énergie**.
 """)
     st.write("")
-=======
-    st.write("## Analyse des Données")
-
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     # Prétraitement des données pour assurer le bon format des colonnes
     dfsmp['annee_mois'] = pd.to_datetime(dfsmp['annee_mois'], format='%Y-%m').dt.to_period('M').astype(str)
 
     # Création du pivot table pour la heatmap avec la température
     heatmap_data = dfsmp.pivot_table(index='annee_mois', columns='region', values='temperature (C°)', aggfunc='mean')
-<<<<<<< HEAD
     st.write("**Données de la Heatmap de la température par région**")
     heatmap_data = heatmap_data.round(2)
     st.write(heatmap_data)
 
     
-=======
-    heatmap_data = heatmap_data.round(2)
-    st.write("Données de la Heatmap :")
-    st.write(heatmap_data)
-
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     # Création de la heatmap avec Plotly
     fig = px.imshow(heatmap_data, 
                     labels=dict(x="Région", y="Année-Mois", color="Température (°C)"),
@@ -169,7 +114,6 @@ L'enjeu ici est de déterminer si ces **nouvelles dimensions** apportent un écl
                     color_continuous_scale='Viridis')  # Utilisation d'une échelle de couleurs contrastée
     
     st.plotly_chart(fig)    
-<<<<<<< HEAD
     st.markdown("""
     **Analyse :**
 
@@ -182,23 +126,6 @@ L'enjeu ici est de déterminer si ces **nouvelles dimensions** apportent un écl
     Cette analyse met en lumière les **variations régionales** et **saisonnières** qui influencent directement les besoins énergétiques en France.
     """)
     st.write ("******************************************************************************************************************")
-=======
-
-    st.write("### Analyse des températures régionales")
-    st.write("""
-    ### Provence-Alpes-Côte d'Azur : La région la plus chaude
-    La région **Provence-Alpes-Côte d'Azur** se distingue avec les températures moyennes les plus élevées en France. Cela s'explique par l'influence de son climat méditerranéen, caractérisé par des étés chauds et des hivers doux.
-    """)
-    st.write("""
-    ### Régions aux températures les plus basses
-    À l'opposé, les régions **Hauts-de-France**, **Normandie**, et **Bretagne**, situées sur le littoral nord-ouest, présentent les températures moyennes les plus faibles. Ces régions sont influencées par l'océan Atlantique et la Manche, ce qui entraîne des températures plus fraîches tout au long de l'année.
-    """)
-    st.write("""
-    ### Mois d'hiver : Les températures les plus froides
-    Sans surprise, les températures les plus basses sont observées durant les mois d'hiver (**Décembre, Janvier, Février**). Le **Grand-Est**, situé à l'intérieur des terres et loin du littoral, subit les plus fortes baisses de température en raison de son climat continental.
-    """)
-
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     #############################################################################
     df = dfsmp.groupby('annee_mois').agg({
     'temperature (C°)': 'mean',
@@ -220,11 +147,7 @@ L'enjeu ici est de déterminer si ces **nouvelles dimensions** apportent un écl
     xaxis_title='Année-Mois',
     yaxis_title='Température (°C)',
     yaxis2=dict(
-<<<<<<< HEAD
         title='Production d électricité nucléaire (MW)',
-=======
-        title='Production d électricité nucléaire (MWh)',
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
         overlaying='y',
         side='right'
     ),
@@ -233,7 +156,6 @@ L'enjeu ici est de déterminer si ces **nouvelles dimensions** apportent un écl
 
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig)
-<<<<<<< HEAD
     st.markdown("""
 **Analyse :**
 
@@ -244,10 +166,6 @@ Cette corrélation inverse souligne l'importance d'étudier les **données mét�
 En intégrant les données météorologiques, nous sommes en mesure d'affiner nos **prévisions en matière de consommation énergétique** et de mieux comprendre comment la météo influe directement sur la production d'énergie.
 """)
     st.write ("******************************************************************************************************************")
-=======
-    st.write ("On remarque pendant toute la période que la température et la production d'énergie nucléaire font les vases communiquant. Quand une variable a des valeurs faibles, l'autre a des valeurs fortes et vice versa")
-
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     ################################################################
 
     heatmap_conso = dfsmp.pivot_table(index='annee_mois', columns='region', values='conso', aggfunc='mean')
@@ -260,7 +178,6 @@ En intégrant les données météorologiques, nous sommes en mesure d'affiner no
                     color_continuous_scale='Inferno')  # Utilisation d'une échelle de couleurs contrastée
     
     st.plotly_chart(fig2)
-<<<<<<< HEAD
     st.markdown("""
     **Analyse :**
 
@@ -271,10 +188,6 @@ En intégrant les données météorologiques, nous sommes en mesure d'affiner no
     De plus, l'analyse révèle une **forte variation saisonnière**, avec des pics de consommation clairement visibles en hiver, probablement en lien avec l'augmentation de la demande pour le chauffage. Le croisement des **données météorologiques** pourrait apporter une meilleure compréhension des facteurs qui influencent ces variations, en confirmant que les périodes de plus forte consommation coïncident avec les mois les plus froids.
     """)
     st.write ("******************************************************************************************************************")
-=======
-    st.write ("On remarque que la consommation la plus importante est sur l'Ile de France, ce qui est corrélé avec la population tandis que la plus faible est pour Centre Val de Loire, Bretagne et Bourgogne Franche-Comté")
-
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     ################################################################
 
     df = dfsmp.groupby('jour_sem').agg({
@@ -284,15 +197,10 @@ En intégrant les données météorologiques, nous sommes en mesure d'affiner no
     # Création du graphique avec Plotly
     fig = go.Figure()
 
-<<<<<<< HEAD
     # Ajouter la courbe pour la température
     fig.add_trace(go.Scatter(x=df['jour_sem'], y=df['conso'], mode='lines+markers', name='Consommation', yaxis='y1'))
 
     # Mise à jour de la mise en page du graphique
-=======
-    fig.add_trace(go.Scatter(x=df['jour_sem'], y=df['conso'], mode='lines+markers', name='Consommation', yaxis='y1'))
-
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     fig.update_layout(
     title = 'Graphique de la consommation en fonction des jours de la semaine',
     xaxis_title='Jour Semaine',
@@ -305,7 +213,6 @@ En intégrant les données météorologiques, nous sommes en mesure d'affiner no
     legend=dict(x=0, y=1.0, traceorder='normal')
     )
 
-<<<<<<< HEAD
     # Afficher le graphique dans Streamlit
     st.plotly_chart(fig)
     st.markdown("""
@@ -316,11 +223,6 @@ La **consommation énergétique** suit un cycle hebdomadaire marqué, avec une d
 La chute marquée le **week-end**, en particulier le **dimanche**, reflète la réduction de l'activité économique, car de nombreuses entreprises ferment ou fonctionnent au ralenti. Ce phénomène est un indicateur clé pour la gestion des **infrastructures énergétiques**, permettant d'optimiser la production et la distribution selon les **cycles d'activité**.
 """)
     st.write ("******************************************************************************************************************")
-=======
-    st.plotly_chart(fig)
-    st.write ("La consommation tout au long de la semaine, pendant les périodes de travail du Lundi au Vendredi : machines de production, électricité... tandis qu'elle est plus faible le week-end, en particulier le dimanche.")
-
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     ################################################################
 
     df = dfsmp.groupby('heure').agg({'conso': 'mean'}).reset_index()
@@ -328,22 +230,15 @@ La chute marquée le **week-end**, en particulier le **dimanche**, reflète la r
     # Création du graphique avec Plotly
     fig = go.Figure()
 
-<<<<<<< HEAD
     # Ajouter la courbe pour la consommation avec la couleur rouge écarlate
     fig.add_trace(go.Scatter(x=df['heure'], y=df['conso'], mode='lines+markers', name='Consommation',
                          line=dict(color='red')))  # Définir la couleur de la courbe
 
     # Mise à jour de la mise en page du graphique
-=======
-    fig.add_trace(go.Scatter(x=df['heure'], y=df['conso'], mode='lines+markers', name='Consommation',
-                         line=dict(color='red')))  # Définir la couleur de la courbe
-
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     fig.update_layout(
     title='Graphique de la consommation en fonction des heures',
     xaxis_title='Heure',
     yaxis_title='Consommation',
-<<<<<<< HEAD
     yaxis2=dict(
         title='Consommation en fonction des jours de la semaine',
         overlaying='y',
@@ -364,14 +259,6 @@ Le **pic de consommation** observé à **midi-12h30** coïncide avec la pause d�
 Ce graphique illustre bien le **cycle quotidien d'activité énergétique**, avec un pic au milieu de la journée, une baisse progressive dans l'après-midi et un creux marqué durant la nuit. Il serait intéressant d’étudier comment les nouvelles habitudes de travail, comme le **télétravail**, influencent ces cycles de consommation.
 """)
     st.write ("******************************************************************************************************************")
-=======
-    legend=dict(x=0, y=1.0, traceorder='normal')
-    )
-
-    st.plotly_chart(fig)
-    st.write ("La consommation est à son pic à 12h30 et est très faible entre minuit et 6h du matin : les heures creuses.")
-
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     #############################################################
 
     df_agg = dfsmp.groupby('region').agg({
@@ -382,10 +269,7 @@ Ce graphique illustre bien le **cycle quotidien d'activité énergétique**, ave
     # Création du graphique avec Plotly
     fig = go.Figure()
 
-<<<<<<< HEAD
     # Ajouter la courbe pour la consommation moyenne par région
-=======
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     fig.add_trace(go.Bar(
     x=df_agg['region'],
     y=df_agg['conso'],
@@ -393,10 +277,7 @@ Ce graphique illustre bien le **cycle quotidien d'activité énergétique**, ave
     marker_color='blue'
     ))
 
-<<<<<<< HEAD
     # Ajouter la courbe pour la population
-=======
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     fig.add_trace(go.Scatter(
     x=df_agg['region'],
     y=df_agg['population'],
@@ -406,10 +287,7 @@ Ce graphique illustre bien le **cycle quotidien d'activité énergétique**, ave
     line=dict(color='red', width=2)
     ))
 
-<<<<<<< HEAD
     # Mise à jour de la mise en page du graphique
-=======
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     fig.update_layout(
     title='Consommation Moyenne et Population par Région',
     xaxis_title='Région',
@@ -424,7 +302,6 @@ Ce graphique illustre bien le **cycle quotidien d'activité énergétique**, ave
     )
 
     st.plotly_chart(fig)
-<<<<<<< HEAD
     st.markdown("""
 **Analyse :**
 
@@ -540,8 +417,8 @@ elif page == pages[3]:
     
     # Afficher les résultats des modèles
     pd.set_option('display.max_columns', None)
-    #result_models = pd.read_csv(r'C:\Users\Mounia\Documents\Projet ENERGIE\result_models.csv', sep=';', header=0)
-    results_algo = joblib.load('C:/Users/Mounia/Documents/PROJET ENERGIE/Modèles et résultats JOBLIB/results_df_algo.joblib')
+    #result_models = pd.read_csv('result_models.csv', sep=';', header=0)
+    results_algo = joblib.load('Modèles et résultats JOBLIB/results_df_algo.joblib')
 
     st.write("---")
     #st.markdown("#### Analyse Comparée des Modèles de Machine Learning")
@@ -563,10 +440,10 @@ elif page == pages[3]:
     st.write('##### Optimisation des Modèles avec la méthode Grid Search')
     st.write("")
  
-    results_grid = joblib.load('C:/Users/Mounia/Documents/Projet ENERGIE/Modèles et résultats JOBLIB/results_df_grid.joblib')
+    results_grid = joblib.load('Modèles et résultats JOBLIB/results_df_grid.joblib')
     st.write(results_grid)
 
-    #st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\post-gridsearch.png")
+    #st.image("Images\post-gridsearch.png")
     st.write("")
     st.write("""
     Après les premiers résultats, nous avons conservé uniquement les modèles non linéaires et appliqué la méthode d’optimisation **Grid Search** pour ajuster les hyperparamètres. Cette optimisation permet de réduire les risques de surapprentissage (overfitting) et d'améliorer les performances.
@@ -579,7 +456,7 @@ elif page == pages[3]:
     """)
 
     # Charger les résultats sauvegardés
-    results_path = r'C:\Users\Mounia\Documents\Projet ENERGIE\Modèles et résultats JOBLIB\LRresults.pkl'
+    results_path = 'Modèles et résultats JOBLIB/LRresults.pkl'
     results = joblib.load(results_path)
 
 
@@ -589,7 +466,7 @@ elif page == pages[3]:
     st.write("")
     st.write("""Nous avons sélectionné Random Forest comme modèle final en raison de ses performances supérieures. Maintenant, explorons plus en détail les variables les plus influentes sur la prédiction, en utilisant la méthode de **Feature Importance**.
     """)
-    st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\feature importance RandomForest.png")
+    st.image("Images/feature importance RandomForest.png")
     # Explication et analyse détaillée
     st.write("""
 
@@ -613,10 +490,10 @@ elif page == pages[3]:
 """)
     
     #st.title("Feature importance Decision Tree")
-    #st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\feature importance DecisionTree.png")
+    #st.image("Images/feature importance DecisionTree.png")
 
     #st.title("Feature importance XGB")
-    #st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\feature importance XGB.png")
+    #st.image("/Images/feature importance XGB.png")
 
     # Afficher les images et les explications
     st.write("---")
@@ -625,7 +502,7 @@ elif page == pages[3]:
     st.write("""
     Les **SHAP values** (SHapley Additive exPlanations) sont une méthode puissante permettant non seulement d’identifier quelles variables sont les plus importantes dans un modèle, mais aussi de comprendre comment chaque variable influence individuellement les prédictions. Le graphique SHAP présenté nous montre l'impact de chaque variable sur la prédiction finale du modèle à travers une représentation colorée (les points rouges indiquant des valeurs élevées et les bleus des valeurs basses).""")
     
-    st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\Shape Random Forest Regressor.png")
+    st.image("Images/Shape Random Forest Regressor.png")
     st.write("""
     À travers le graphique ci-dessus, nous pouvons observer plus en détail comment chaque variable influence les prédictions du modèle.
 
@@ -642,11 +519,11 @@ elif page == pages[3]:
     """)
     
     #st.title("Shape de Decision Tree Regressor")
-    #st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\Shape Decision Tree Regressor.png")
+    #st.image("Images/Shape Decision Tree Regressor.png")
     #st.write("On remarque que les variables ayant le plus d'impact dans le modèle Decision Tree Regressor sont : population, therm, ech_phy")
 
     #st.title("Shape de XGB Regressor")
-    #st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\Shape XGB Regressor.png")
+    #st.image("Images/Shape XGB Regressor.png")
     #st.write("On remarque que les variables ayant le plus d'impact dans le modèle XGB Regressor sont : population, bioen, therm, Température (C°)")
     st.write("---")
     st.write("##### Performance du Modèle : Prédictions vs Réalités")
@@ -658,7 +535,7 @@ elif page == pages[3]:
     Le premier graphique représente l’Île-de-France, une région fortement urbanisée avec une population dense et une demande énergétique importante. Cette forte demande s’explique par la présence d’infrastructures majeures, d'une industrie développée, ainsi que par la consommation des ménages.
     """)
     st.write("")
-    st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\predic vs reel IDF.png")
+    st.image("Images/predic vs reel IDF.png")
     st.write("""
 
     **Analyse** :
@@ -675,7 +552,7 @@ elif page == pages[3]:
 Le deuxième graphique représente la région Provence-Alpes-Côte d'Azur (PACA), une région caractérisée par un climat méditerranéen et une consommation énergétique influencée par des besoins spécifiques tels que la climatisation durant l'été.
 """)    
 
-    st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\predic vs reel PAC.png")
+    st.image("Images/predic vs reel PAC.png")
     st.write("""
 **Analyse ** :
 - La **consommation réelle moyenne** (ligne bleue) présente un pic marqué en milieu de semaine, avec une baisse continue à partir du jeudi jusqu'au week-end. Cela peut refléter la réduction des activités économiques en fin de semaine, typique des régions à forte composante touristique et résidentielle.
@@ -688,7 +565,7 @@ Le deuxième graphique représente la région Provence-Alpes-Côte d'Azur (PACA)
     st.write("""
 Le troisième graphique représente la région Nouvelle-Aquitaine, une région plus étendue avec une densité de population moindre, mais avec des industries spécifiques et des variations climatiques importantes.
 """)
-    st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\predic vs reel NAQ.png")
+    st.image("Images/predic vs reel NAQ.png")
     st.write("""
 **Analyse** :
 - La **consommation réelle moyenne** (ligne bleue) montre une tendance similaire aux autres régions, avec un pic en milieu de semaine et une baisse progressive jusqu'au week-end. 
@@ -719,168 +596,7 @@ Bien que les dynamiques globales soient correctement appréhendées, affiner ces
     ainsi un outil interactif pour anticiper les besoins en énergie et optimiser la gestion des ressources.
     """)
     st.write("")
-    model_path = r"C:\Users\Mounia\Documents\Projet ENERGIE\Modèles et résultats JOBLIB\Random_Forest_Regressor_model.pkl"
-=======
-    st.write (" On remarque que la consommation moyenne par population est la plus forte en Ile De France : une personne consomme plus en moyenne en Ile de France que dans les autres régions. Cela peut s'expliquer par la quantité d'infrastructures et d'outils de production à alimenter dans cette région.")
-
-elif page == pages[3]:
-    st.write("## Modélisation et Prédictions")
-
-    # Créer des expanders pour chaque sous-section
-    with st.expander("Résultats des modèles"):
-        st.write("### Performances des modèles (Entraînement)")
-        result_models = pd.read_csv(r'C:\Users\Mounia\Documents\Projet ENERGIE\result_models.csv', sep=';', header=0)
-        st.write(result_models)
-        st.markdown("#### Évaluation des Modèles d'Entraînement : Performances et Comparaison")
-        st.write("""
-
-    Lors de l’entraînement, nous avons sélectionné sept algorithmes couvrant une large variété de techniques, allant des régressions linéaires aux régressions    non linéaires, et des modèles simples aux modèles plus complexes. Les algorithmes choisis incluent : **régression linéaire**, **régression Ridge**, **Lasso**, **ElasticNet**, **Decision Tree**, **Random Forest** et **XGBoost**.
-
-    Le tableau ci-dessous présente les métriques d'évaluation de chaque modèle. Nous observons que le **Random Forest** se distingue clairement comme le meilleur modèle pour ce jeu de données, avec un **R² proche de 0,9**. De plus, la différence entre le score d'entraînement et le score de test est la plus faible, ce qui indique que ce modèle parvient à généraliser efficacement sur les données de test sans sur-apprentissage (**overfitting**), contrairement à certains autres modèles.
-
-    Les méthodes de régression linéaire, quant à elles, n'ont pas bien performé, comme en témoigne leur **R² négatif** et des erreurs plus importantes. Cela montre que les modèles linéaires ne sont pas adaptés à la complexité du jeu de données.
-
-    En conséquence, nous avons conservé les modèles non linéaires et avons appliqué une optimisation des hyperparamètres à l’aide de la méthode **Grid Search**. Cette approche permet de réduire le risque de sur-apprentissage et de garantir que les résultats soient robustes et optimisés.""")
-
-        st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\post-gridsearch.png")
-        st.write("""
-        **Analyse des Résultats après Optimisation (Grid Search)**
-
-        Après avoir appliqué la méthode **Grid Search**, nous avons affiné les hyperparamètres des modèles non linéaires...
-        """)
-
-    with st.expander("Features Importance"):
-        st.write("### Importance des Features")
-        st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\feature importance RandomForest.png")
-        st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\feature importance DecisionTree.png")
-        st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\feature importance XGB.png")
-
-    with st.expander("Prédictions et Analyse"):
-        st.write("### Prédictions et Analyse")
-        st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\Shape Random Forest Regressor.png")
-        st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\Shape Decision Tree Regressor.png")
-        st.image(r"C:\Users\Mounia\Documents\Projet ENERGIE\Images\Shape XGB Regressor.png")
-
-        regions = dfsmp['region'].unique()
-        selected_region = st.selectbox("Choisis une région", regions)
-        population = st.number_input("Population", min_value=0)
-
-        if st.button("Prédire la consommation"):
-            model_path = r"C:\Users\Mounia\Documents\Projet ENERGIE\Modèles et résultats JOBLIB\Random_Forest_Regressor_model.pkl"
-            model = joblib.load(model_path)
-            st.session_state.new_data = pd.DataFrame()
-            # Conversion de la colonne 'date_heure' en datetime sans format spécifié
-            dfsmp['date_heure'] = pd.to_datetime(dfsmp['date_heure'], errors='coerce')
-    
-<<<<<<<< HEAD:Application Projet Energie1.py
-            # Obtenez les régions uniques
-            regions = dfsmp['region'].unique()
-
-            # Sélection de la région
-            selected_region = st.selectbox("Choisis une région", regions)
-            date_input = st.date_input("Date", min_value=datetime(2023, 1, 1), max_value=datetime(2100, 12, 31))
-            month = date_input.month  # Définir le mois après la sélection de la date
-             # Liste des tranches d'heures (chaque tranche de 3 heures)
-            time_slots = ["00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00"]
-              # Sélection d'une heure avec des tranches de 3 heures
-            selected_time = st.selectbox("Choisis une heure (tranches de 3h)", time_slots)
-            # Convertir l'heure sélectionnée en nombre d'heures
-            hour = int(selected_time.split(":")[0])
-            population = st.number_input("Population", min_value=0)
-            year=date_input.year
-            day=date_input.day
-    
-            # Filtrage des données
-            filtered_data = dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]
-    
-            new_data = pd.DataFrame({
-            'annee': [year],
-            'therm': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['therm'].mean(),
-            'nucl': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['nucl'].mean(),
-            'eol': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['eol'].mean(),
-            'sol': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['sol'].mean(),
-            'hydr': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['hydr'].mean(),
-            'pomp': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['pomp'].mean(),
-            'bioen': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['bioen'].mean(),
-            'ech_phy': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['ech_phy'].mean(),
-            'stock_bat': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['stock_bat'].mean(),
-            'destock_bat': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['destock_bat'].mean(),
-            'eol_terr': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['eol_terr'].mean(),
-            'eol_off': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['eol_off'].mean(),
-            'pression_niv_mer (Pa)': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['pression_niv_mer (Pa)'].mean(),
-            'vitesse du vent moyen 10 mn (m/s)': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['vitesse du vent moyen 10 mn (m/s)'].mean(),
-            'temperature (C°)': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['temperature (C°)'].mean(),
-            'humidite (%)': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['humidite (%)'].mean(),
-            'pression station (Pa)': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['pression station (Pa)'].mean(),
-            'precipitations dans les 3 dernieres heures (mm)': dfsmp[(dfsmp['region'] == selected_region) & (dfsmp['date_heure'].dt.month == month) & (dfsmp['date_heure'].dt.hour == hour)]['precipitations dans les 3 dernieres heures (mm)'].mean(),
-            'population': [population],
-            'region_FR-ARA': [1 if selected_region == 'FR-ARA' else 0],
-            'region_FR-BFC': [1 if selected_region == 'FR-BFC' else 0],
-            'region_FR-BRE': [1 if selected_region == 'FR-BRE' else 0],
-            'region_FR-CVL': [1 if selected_region == 'FR-CVL' else 0],
-            'region_FR-GES': [1 if selected_region == 'FR-GES' else 0],
-            'region_FR-HDF': [1 if selected_region == 'FR-HDF' else 0],
-            'region_FR-IDF': [1 if selected_region == 'FR-IDF' else 0],
-            'region_FR-NAQ': [1 if selected_region == 'FR-NAQ' else 0],
-            'region_FR-NOR': [1 if selected_region == 'FR-NOR' else 0],
-            'region_FR-OCC': [1 if selected_region == 'FR-OCC' else 0],
-            'region_FR-PAC': [1 if selected_region == 'FR-PAC' else 0],
-            'region_FR-PDL': [1 if selected_region == 'FR-PDL' else 0],
-            'cos_heure': [np.cos(2 * np.pi * hour / 24)],
-            'sin_heure': [np.sin(2 * np.pi * hour / 24)],
-            'jour_sin': [np.sin(2 * np.pi * day / 365)],
-            'jour_cos': [np.cos(2 * np.pi * day / 365)],
-            'jour_sem_sin': [np.sin(2 * np.pi * (date_input.weekday() + 1) / 7)],
-            'jour_sem_cos': [np.cos(2 * np.pi * (date_input.weekday() + 1) / 7)],
-            'mois_sin': [np.sin(2 * np.pi * month / 12)],
-            'mois_cos': [np.cos(2 * np.pi * month / 12)]
-        })
-========
-    # Afficher les résultats des modèles
-    pd.set_option('display.max_columns', None)
-    result_models = pd.read_csv('result_models.csv', sep=';', header=0)
-    st.write(result_models)
-
-    st.image("Images/post-gridsearch.png")
-
-    # Charger les résultats sauvegardés
-    results_path = 'Modèles et résultats JOBLIB/LRresults.pkl'
-    results = joblib.load(results_path)
-    
-    #Afficher les features importances
-    st.title("Feature importance Random Forest")
-    st.image("Images/feature importance RandomForest.png")
-  
-    st.title("Feature importance Decision Tree")
-    st.image("Images/feature importance DecisionTree.png")
-
-    st.title("Feature importance XGB")
-    st.image("Images/feature importance XGB.png")
-
-    # Afficher les images et les explications
-    st.title("Shape de Random Forest Regressor")
-    st.image("Images/Shape Random Forest Regressor.png")
-    st.write("On remarque que les variables ayant le plus d'impact dans le modèle Random Forest Regressor sont : population, bioen, therm, Température (C°)")
-    
-    st.title("Shape de Decision Tree Regressor")
-    st.image("Images/Shape Decision Tree Regressor.png")
-    st.write("On remarque que les variables ayant le plus d'impact dans le modèle Decision Tree Regressor sont : population, therm, ech_phy")
-
-    st.title("Shape de XGB Regressor")
-    st.image("Images/Shape XGB Regressor.png")
-    st.write("On remarque que les variables ayant le plus d'impact dans le modèle XGB Regressor sont : population, bioen, therm, Température (C°)")
-    
-    st.image("Images/predic vs reel IDF.png")
-    st.write("Île-de-France (IDF) - région avec une forte densité de population et une demande énergétique importante.")
-    st.image("Images/predic vs reel PAC.png")
-    st.write("Provence-Alpes-Côte d'Azur (PACA) - région plus ensoleillée et avec des variations de consommation différentes.")
-    st.image("Images/predic vs reel NAQ.png")
-    st.write("Nouvelle-Aquitaine (NAQ) - une région avec une répartition plus rurale et des besoins énergétiques différents.")
-
-    st.write("On remarque que les modèles suivent bien les tendances du réel. Tous sous-estiment les valeurs en semaine et surestiment les valeurs du week-end")
-
     model_path = "Modèles et résultats JOBLIB/Random_Forest_Regressor_model.pkl"
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
     model = joblib.load(model_path)
     st.session_state.new_data = pd.DataFrame()
     # Conversion de la colonne 'date_heure' en datetime sans format spécifié
@@ -948,7 +664,6 @@ elif page == pages[3]:
     'mois_sin': [np.sin(2 * np.pi * month / 12)],
     'mois_cos': [np.cos(2 * np.pi * month / 12)]
 })
-<<<<<<< HEAD
     
         # Bouton pour ajouter ou écraser les données
     if st.button("Prédire la consommation"):
@@ -1032,16 +747,3 @@ Ce projet nous a permis de mettre en pratique toutes les étapes essentielles à
 
 Bien que les prédictions actuelles soient prometteuses, nous voyons dans ce projet une étape vers une compréhension encore plus fine des dynamiques de consommation énergétique. L’intégration de nouvelles variables socio-économiques, ainsi que des techniques avancées d’optimisation, pourraient faire de ce modèle un outil encore plus robuste pour anticiper les besoins énergétiques futurs et optimiser la gestion des ressources dans les années à venir.
 """)
-=======
->>>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437:Application_Projet_Energie.py
-    
-            # Bouton pour ajouter ou écraser les données
-            if st.button("Prédire la consommation"):
-                predicted_conso = model.predict(new_data)
-                # Affichage du résultat
-                st.write(f"Consommation énergétique prédite: {predicted_conso[0]:.2f} MW")
-
-            # Affichage des données ajoutées
-            st.write("Données ajoutées:")
-            st.write(new_data)
->>>>>>> 92212adcec11a5708281f67d6159ec216b1ba437
