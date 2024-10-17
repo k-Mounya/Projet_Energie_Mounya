@@ -9,13 +9,16 @@ from datetime import datetime
 import xgboost
 import joblib
 
-st.header("Projet d'Analyse de la Consommation et Production d'Énergie")
-st.subheader("Réalisé par Mounya Kazi Aoual")
+
 st.sidebar.title("Sommaire")
 
 pages = ["Introduction et problématique", "Exploration des données", "Analyse des données", "Modélisation et Prédictions","Conclusion et Perspectives"]
 page = st.sidebar.radio("Aller vers la page", pages)
+st.sidebar.title("Projet Analyse Énergétique")
+st.sidebar.write("Réalisé par Mounya Kazi Aoual")
+
 pd.set_option('display.max_columns', None)
+
 dfsmp = pd.read_csv('dfsmp.csv', sep=',', header=0)
 
 if page == pages[0]:
