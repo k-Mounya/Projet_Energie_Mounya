@@ -10,19 +10,28 @@ import xgboost
 import joblib
 
 st.sidebar.title("Projet Analyse Énergétique")
-st.sidebar.write("Réalisé par :")
-st.sidebar.write("Mounya Kazi Aoual")
-st.sidebar.write("Thierry Allem")
-st.sidebar.write("Tony Moscatelli")
 
-st.write("")
-st.write("")
+# Ajout d'un séparateur
+st.sidebar.markdown("---")
 
+# Section pour les auteurs avec un format plus lisible
+st.sidebar.subheader("Réalisé par :")
+st.sidebar.write("- **Mounya Kazi Aoual**")
+st.sidebar.write("- Thierry Allem")
+st.sidebar.write("- Tony Moscatelli")
 
-st.sidebar.title("Sommaire")
+# Ajout d'un autre séparateur
+st.sidebar.markdown("---")
 
-pages = ["Introduction et problématique", "Exploration des données", "Analyse des données", "Modélisation et Prédictions","Conclusion et Perspectives"]
-page = st.sidebar.radio("Aller vers la page", pages)
+# Titre du sommaire
+st.sidebar.subheader("Sommaire")
+
+# Liste des pages dans le sommaire
+pages = ["Introduction et problématique", "Exploration des données", "Analyse des données", 
+         "Modélisation et Prédictions", "Conclusion et Perspectives"]
+
+# Ajout de la navigation par onglet
+selected_page = st.sidebar.radio("Aller vers", pages)
 
 
 pd.set_option('display.max_columns', None)
