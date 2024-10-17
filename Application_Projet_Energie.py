@@ -30,9 +30,7 @@ st.sidebar.subheader("Sommaire")
 pages = ["Introduction et problématique", "Exploration des données", "Analyse des données", 
          "Modélisation et Prédictions", "Conclusion et Perspectives"]
 
-# Ajout de la navigation par onglet
-selected_page = st.sidebar.radio("Aller vers", pages)
-
+page = st.sidebar.radio("Aller vers", pages)
 
 pd.set_option('display.max_columns', None)
 
