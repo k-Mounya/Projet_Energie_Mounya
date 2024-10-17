@@ -419,12 +419,30 @@ elif page == pages[3]:
     pd.set_option('display.max_columns', None)
     #result_models = pd.read_csv('result_models.csv', sep=';', header=0)
     results_algo = joblib.load('Modèles et résultats JOBLIB/results_df_algo.joblib')
+    
+    # Fonction pour formater les grands nombres
+    def format_large_integers(val):
+        if isinstance(val, (int, float)) and val > 1_000_000_000_000:
+            return f'{val / 1_000_000_000_000:.2f}T'  # Trillions
+        elif isinstance(val, (int, float)) and val > 1_000_000_000:
+            return f'{val / 1_000_000_000:.2f}B'  # Billions
+        elif isinstance(val, (int, float)) and val > 1_000_000:
+            return f'{val / 1_000_000:.2f}M'  # Millions
+        else:
+            return val
 
+    # Appliquer le formatage sur le DataFrame
+    results_algo_formatted = results_algo.applymap(format_large_integers)
+
+    
+
+    
     st.write("---")
     #st.markdown("#### Analyse Comparée des Modèles de Machine Learning")
     st.write('##### Analyse Comparée des Modèles de Machine Learning')
     st.write("")
-    st.write(results_algo)
+    st.write(results_algo_formatted)
+    #st.write(results_algo)
     st.write("")
     st.write("""
     Pour l’entraînement, nous avons choisi 7 algorithmes couvrant une variété technique allant de la régression linéaire à la régression non linéaire, et du simple au complexe.
